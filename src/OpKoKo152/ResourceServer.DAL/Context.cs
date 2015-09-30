@@ -11,6 +11,8 @@ namespace ResourceServer.DAL
 {
     public class Context : DbContext
     {
+        public Context() : base("Context") { }
+
         public DbSet<Value> Values { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
