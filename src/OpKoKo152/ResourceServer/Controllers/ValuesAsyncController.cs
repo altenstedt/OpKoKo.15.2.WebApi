@@ -6,6 +6,7 @@ using ResourceServer.DAL;
 
 namespace ResourceServer.Controllers
 {
+    [Authorize]
     [EnableCors("*", "*", "*")]
     [RoutePrefix("api/async/values")]
     public class ValuesAsyncController : ApiController

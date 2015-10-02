@@ -3,6 +3,7 @@ using System.Web.Http.Cors;
 
 namespace ResourceServer.Controllers
 {
+    [Authorize]
     [EnableCors("*", "*", "*")]
     [RoutePrefix("api/values")]
     public class ValuesController:ApiController

@@ -5,6 +5,7 @@ using ResourceServer.DAL;
 
 namespace ResourceServer.Controllers
 {
+    [Authorize]
     [EnableCors("*", "*", "*")]
     [RoutePrefix("api/sync/values")]
     public class ValuesSyncController:ApiController
