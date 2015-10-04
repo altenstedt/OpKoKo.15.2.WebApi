@@ -1,0 +1,28 @@
+<template>
+  <section class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+    <h3>${heading}</h3>
+
+    <form role="form" submit.delegate="logOn()">
+      <div class="form-group">
+        <input type="email" value.bind="email" class="form-control" id="fn" placeholder="Email" disabled.bind="disabled" required>
+        <input type="password" value.bind="password" class="form-control" id="ln" placeholder="Password" disabled.bind="disabled" required>
+        <div>&nbsp;</div> <!-- Vertical space -->
+
+        <button type="submit" class="btn btn-default" show.bind="!disabled">Log On</button>
+        <div show.bind="disabled" class="fa fa-cog fa-spin fa-2x"></div>
+
+        &nbsp;&nbsp;
+      </div>
+
+
+      <div class="text-info bg-info">${response}</div>
+
+      <div>&nbsp;</div> <!-- Vertical space -->
+
+      <div>&nbsp;</div> <!-- Vertical space -->
+
+      <p><a href="#" class="text-muted">Forgot password?</a></p>
+      <p><a href="#" class="text-muted">Create account?</a></p>
+    </form>
+  </section>
+</template>

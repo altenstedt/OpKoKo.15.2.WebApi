@@ -12,3 +12,6 @@ Visual Studio and then add the NuGet packages by hand:
   6. Folder Controllers
   7. Add new controller
 
+For Entity Framework, we need the following:
+
+  1. Install-Package EntityFramework
