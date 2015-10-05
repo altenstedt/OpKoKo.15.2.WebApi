@@ -13,6 +13,7 @@ export class TokenService {
   accessTokenExpires = null;
   refreshToken = null;
   claims = {};
+  clientId = "Web Application";
 
   constructor(http, eventAggregator, tokenErrorStrategy) {
     this.http = http;
@@ -40,7 +41,7 @@ export class TokenService {
   logOn(username, password) {
     var pass = encodeURIComponent(password);
     var pass2 = pass.replace(/%20/g, '+');
-    var content = `grant_type=password&username=${username}&password=${pass2}`;
+    var content = `grant_type=password&username=${username}&password=${pass2}&client_id=${this.clientId}`;
 
     return this.http.fetch(this.tokenUrl, {
       mode: "cors",
@@ -80,7 +81,7 @@ export class TokenService {
 
   logOnWithRefreshToken() {
     var encoded = encodeURIComponent(this.refreshToken).replace(/%20/g, '+');
-    var content = `grant_type=refresh_token&refresh_token=${encoded}`;
+    var content = `grant_type=refresh_token&refresh_token=${encoded}&client_id=${this.clientId}`;
     var timeId = `POST ${this.tokenUrl} HTTP/1.1`;
 
     console.time(timeId);
