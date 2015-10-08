@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li repeat.for="row of router.navigation | claimsFilter: claims" class="${row.isActive ? 'active' : ''}">
-          <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href.bind="row.href"><span if.bind="!row.settings.icon">${row.title}</span><i if.bind="row.settings.icon" class="fa ${row.settings.icon}"></i></a>
+          <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href.bind="row.href">${row.title}</a>
         </li>
       </ul>
 
