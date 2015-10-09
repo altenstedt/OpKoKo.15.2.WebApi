@@ -15,8 +15,6 @@ namespace ResourceServer
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute("Api", "{Controller}");
             config.EnableCors();
-            app.UseWebApi(config);
-
 
             var issuer = ConfigurationManager.AppSettings["Issuer"];
             var audience = ConfigurationManager.AppSettings["Audience"];
@@ -39,6 +37,8 @@ namespace ResourceServer
                         //new X509CertificateSecurityTokenProvider(issuer, new X509Certificate2("PATH_TO_YOUR_PUBLIC_CERTIFICATE.cer")),
                     },
                 });
+
+            app.UseWebApi(config);
         }
     }
 }
