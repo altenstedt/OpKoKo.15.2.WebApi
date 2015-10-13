@@ -20,7 +20,7 @@ namespace ResourceServer
             var audience = ConfigurationManager.AppSettings["Audience"];
             var signingCertificateSubjectDistinguishedName = ConfigurationManager.AppSettings["SigningCertificateSubjectDistinguishedName"];
 
-            var store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
+            var store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
             store.Open(OpenFlags.ReadOnly);
             var certificate = store.Certificates.Find(X509FindType.FindBySubjectDistinguishedName, signingCertificateSubjectDistinguishedName, true)[0];
 
