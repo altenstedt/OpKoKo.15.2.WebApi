@@ -1,8 +1,11 @@
 ﻿using System.Configuration;
+using System.Linq;
+using System.Net.Http.Formatting;
 using System.Security.Cryptography.X509Certificates;
 using System.Web.Http;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Jwt;
+using Newtonsoft.Json.Serialization;
 using Owin;
 
 namespace ResourceServer
@@ -24,6 +27,9 @@ namespace ResourceServer
             store.Open(OpenFlags.ReadOnly);
             var certificate = store.Certificates.Find(X509FindType.FindBySubjectDistinguishedName, signingCertificateSubjectDistinguishedName, true)[0];
 
+            // JSON should serialize to camelCase, not PascalCase (the default)
+            var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
+            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             // Api controllers with an [Authorize] attribute will be validated with JWT
             app.UseJwtBearerAuthentication(
